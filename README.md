@@ -132,7 +132,7 @@ C'est ce que j'ai fait dans le fichier `script_bonus.js`.  <br>
 
 ## **Chercher & appliquer**
 ***Tout est dans le titre.*** J'ai cherché s'il existait en JS une fonction permettant de récupérer l'heure actuelle, et j'ai trouvé ceci : 
-1. Pour récupérer la date et l'heure en JS, on utilise l'objet `Date` ([où j'ai trouvé mes infos ?](https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript-fr)). Celui-ci permet de créer une date, de la récupérer ou la modifier, à l'aide de différentes *méthodes* ([qu'est-ce qu'une méthode ?](lien à ajouter)). Pour définir une variable de ce type, on procède comme suit :
+1. Pour récupérer la date et l'heure en JS, on utilise l'objet `Date` ([où j'ai trouvé mes infos ?](https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript-fr)). Celui-ci permet de créer une date, de la récupérer ou la modifier, à l'aide de différentes *méthodes* (une fonction qui est associée à un objet et qui permet d’interagir avec cet objet). Pour définir une variable de ce type, on procède comme suit :
 ```
 const	time = new Date();
 ```
