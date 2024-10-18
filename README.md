@@ -85,7 +85,7 @@ sayHello("Beyonce");
 > On remarque dans ce code que je n'ai pas redéclaré de variable `firstName` comme précedemment, mais qu'à la place j'utilise directement la chaîne de caractères `"Beyonce"` dans mon appel de fonction.
 1. J'ajoute une nouvelle variable nommée `hour` en paramètres de la fonction `sayHello()` : 
 `function sayHello(firstName, hour)`
-2. Je dois ajouter une condition dans la fonction pour que lorsque `hour` est supérieur ou égal à 18H, `message` prenne la valeur `"Bonsoir"` plutôt que `"Bonjour"`. Pour ce faire j'utilise une ternaire (aussi appelée opérateur conditionnel, [par ici la doc pour plus d'infos](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Conditional_operator)). Ma condition est donc `hour >= 18 ?`, et je choisis de mettre ma ternaire directement dans la déclaration de message, comme ceci :
+2. Je dois ajouter une condition dans la fonction pour que lorsque `hour` est supérieur ou égal à 18H, `message` prenne la valeur `"Bonsoir"` plutôt que `"Bonjour"`. Pour ce faire j'utilise une ternaire (aussi appelée *opérateur conditionnel*, [voir la doc pour plus d'infos](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Conditional_operator)). Ma condition est donc `hour >= 18 ?`, et je choisis de mettre ma ternaire directement dans la déclaration de message, comme ceci :
 ```
 let	message = (hour >= 18) ? `Bonsoir ${name} !` : `Bonjour ${name} !`;
 ```
