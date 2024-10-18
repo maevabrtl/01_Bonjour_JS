@@ -4,8 +4,8 @@ let 	firstName = prompt("What's your name ?");
 
 function sayHello(name, hour){
 	let	message = (hour >= 18) ? `Bonsoir ${name} !` : `Bonjour ${name} !`;
-  	console.log("hour = " + hour);
-	  document.querySelector('h1').innerText = message;
+  	console.log(`Il est ${hour}h !`);
+	document.querySelector('h1').innerText = message;
 }
 
 sayHello(firstName, hourTime);

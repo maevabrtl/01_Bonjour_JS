@@ -70,4 +70,96 @@ function sayHello(name) {
 sayHello(firstName);
 ```
 
-> Voilà donc pour ces 3 premières étapes. J'ajouterai plus tard l'étape 4 (optionnelle), ainsi que les étapes 5 et 6 (bonus).
+## **Étape 4 : un second paramètre**
+
+Pour cette étape, je crée un nouveau fichier `script_optionnel.js`, dans lequel je copie le code précédent.
+```
+function sayHello(name) {
+	message = `Bonjour ${name} !`;
+	console.log(message);
+}
+
+sayHello("Beyonce");
+```
+> [!NOTE]
+> On remarque dans ce code que je n'ai pas redéclaré de variable `firstName` comme précedemment, mais qu'à la place j'utilise directement la chaîne de caractères `"Beyonce"` dans mon appel de fonction.
+1. J'ajoute une nouvelle variable nommée `hour` en paramètres de la fonction `sayHello()` : 
+`function sayHello(firstName, hour)`
+2. Je dois ajouter une condition dans la fonction pour que lorsque `hour` est supérieur ou égal à 18H, `message` prenne la valeur `"Bonsoir"` plutôt que `"Bonjour"`. Pour ce faire j'utilise une ternaire (aussi appelée opérateur conditionnel, [par ici la doc pour plus d'infos](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Conditional_operator)). Ma condition est donc `hour >= 18 ?`, et je choisis de mettre ma ternaire directement dans la déclaration de message, comme ceci :
+```
+let	message = (hour >= 18) ? `Bonsoir ${name} !` : `Bonjour ${name} !`;
+```
+Je teste ensuite mon code avec plusieurs appels de fonction avec des nombres différents pour vérifier que mon code fonctionne. Voici donc mon code final pour cette étape :
+```
+function sayHello(name, hour){
+	let	message = (hour >= 18) ? `Bonsoir ${name} !` : `Bonjour ${name} !`;
+	console.log(message);
+}
+
+sayHello("Beyonce", 11);
+sayHello("Beyonce", 18);
+sayHello("Beyonce", 17);
+```
+> [!NOTE]
+> Pour cet exercice, je trouve qu'il serait intéressant de pouvoir générer un nombre aléatoire (enfin [pseudo-aléatoire](https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire), mais j'utilise le mot aléatoire pour plus de simplicité). Je vais donc détailler mon cheminement ci-dessous.
+Il existe plusieurs fonctions contenues dans l'objet `Math`([doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)) en JS qui, combinées ensemble, nous permettent de générer un nombre entier (nombre ou chiffre non-décimal) aléatoire dans une plage donnée (*range*). Ici, nous souhaitons avoir une range qui va de 0 (inclus) à 24 (exclus) pour générer n'importe quelle heure d'une journée.
+> La fonction `Math.random()` : renvoie un nombre décimal entre 0 (inclus) et 1 (exclus), ce qui donne un chiffre compris ente 0 et 0.999(999... etc).
+Pour générer un nombre compris entre 0 et 24, je dois donc multiplier le *retour* de `Math.random()` par la taille de ma range, c'est-à-dire 24.
+> La fonction `Math.floor()` : arrondit à l'entier inférieur le nombre qui lui est passé en paramètre (par exemple, si nous écrivons `Math.floor(5.6)`, la fonction nous *retournera* `5`).
+> [!NOTE]
+> J'utilise cette fonction pour travailler avec des entiers, ce que je trouve plus simple et plus clair, et qui me permet de découvrir et apprendre à utiliser de nouvelles fonctions, mais ce n'est pas du tout une obligation dans ce cas.
+Je dois donc envoyer la valeur `Math.random() * 24` en paramètre de `Math.floor()` pour obtenir le résultat souhaité.
+Pour plus de lisibilité je déclare une *constante* (valeur fixe) à laquelle j'assigne la taille de ma range : `const	nbOfHours = 24;`.
+Ensuite, je modifie mon appel de fonction avec ces nouveaux paramètres. 
+Pour vérifier que mon code fonctionne, j'utilise `console.log()` pour afficher dans la console la valeur qui aura été générée et assignée au paramètre `hour` de la fonction `sayHello()`.
+Mon code final ressemble donc à ceci :
+```
+const	nbOfHours = 24;
+
+function sayHello(name, hour){
+	let	message = (hour >= 18) ? `Bonsoir ${name} !` : `Bonjour ${name} !`;
+	console.log(`Il est ${hour}h !`);
+	console.log(message);
+}
+
+sayHello("Beyonce", (Math.floor(Math.random() * nbOfHours)));
+sayHello("Beyonce", (Math.floor(Math.random() * nbOfHours)));
+sayHello("Beyonce", (Math.floor(Math.random() * nbOfHours)));
+```
+
+## **Étape 5 : HTML, liaison avec JavaScript**
+*A partir de cette étape, le fichier JS correspondant sera `script_bonus.js`.*
+La méthode de résolution de cette étape est expliquée dans l'énoncé, je ne vais donc pas la reprendre en détail. Cette étape consiste à créer un fichier `index.html` qui fasse le lien avec notre script JavaScript.
+
+## **Étape 6 : Première manipulation du DOM**
+Pour cette étape, comme la précédente, une bonne partie du procédé est expliqué dans l'énoncé. Je reviens donc simplement sur l'utilisation de la commande `prompt()`, qui sera utilisée dans mon code comme ceci : `let 	firstName = prompt("What's your name ?");`. Dans cette ligne, j'assigne à ma variable `firstName` la *valeur de retour* de la fonction `prompt()`, qui sera ici le nom rentré par l'utilisateur.
+
+# ***Pour aller plus loin*** 
+Après avoir réalisé cet exercice, j'ai réfléchi aux différentes modifications et apports que je pourrais faire à ce code pour m'entrainer. J'ai donc décidé de me mettre un nouveau challenge : à la place de générer pseudo-aléatoirement un nombre pour ma variable `hour`, pourquoi ne pas tout simplement récupérer l'heure actuelle ?
+C'est ce que j'ai fait dans le fichier `script_bonus.js`.
+
+## **Chercher & appliquer**
+***Tout est dans le titre.*** J'ai cherché s'il existait en JS une fonction permettant de récupérer l'heure actuelle, et j'ai trouvé ceci : 
+1. Pour récupérer la date et l'heure en JS, on utilise l'objet `Date` ([où j'ai trouvé mes infos ?](https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript-fr)). Celui-ci permet de créer une date, de la récupérer ou la modifier, à l'aide de différentes *méthodes* ([qu'est-ce qu'une méthode ?](lien à ajouter)). Pour définir une variable de ce type, on procède comme suit :
+```
+const	time = new Date();
+```
+2. Pour obtenir uniquement l'heure (donc, ce qui nous intéresse ici) nous utilisons la méthode `getHours()` :
+```
+const	time = new Date();
+const	hourTime = time.getHours();
+```
+Il ne me reste plus qu'a passé la valeur de `hourTime` en paramètre de la fonction `sayHello()` et le code est codé.
+
+> *Pour voir mon code final sur ce projet, rendez-vous dans le fichier `script_bonus.js`.*
+
+# ***Conclusion***
+
+Réaliser ce `README.md` m'a permis : 
+- de revoir le processus d'éxecution de mon code,
+- de réfléchir à son architecture et comment le *clean*,
+- de corriger quelques erreurs,
+- d'approfondir et de mieux comprendre certaines notions,
+- pratiquer mon vocabulaire tech et mes explications.
+
+**C'était un projet intéressant et bien organisé, réalisable de plein de manières différentes. Il m'a permis de découvrir de nouvelles notions et laisse de la place pour approfondir.**

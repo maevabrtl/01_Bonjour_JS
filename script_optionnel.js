@@ -1,16 +1,11 @@
-const	max = 24;
-let 	firstName = 'Beyonce';
+const	nbOfHours = 24;
 
-function sayHello(name, hour){
+function sayHello(name, hour) {
 	let	message = (hour >= 18) ? `Bonsoir ${name} !` : `Bonjour ${name} !`;
-  	console.log("hour = " + hour);
+	console.log(`Il est ${hour}h !`);
 	console.log(message);
 }
 
-sayHello(firstName, (Math.floor(Math.random() * max)));
-sayHello(firstName, (Math.floor(Math.random() * max)));
-sayHello(firstName, (Math.floor(Math.random() * max)));
-sayHello(firstName, (Math.floor(Math.random() * max)));
-sayHello(firstName, (Math.floor(Math.random() * max)));
-sayHello(firstName, (Math.floor(Math.random() * max)));
-sayHello(firstName, (Math.floor(Math.random() * max)));
+sayHello("Beyonce", (Math.floor(Math.random() * nbOfHours)));
+sayHello("Beyonce", (Math.floor(Math.random() * nbOfHours)));
+sayHello("Beyonce", (Math.floor(Math.random() * nbOfHours)));
